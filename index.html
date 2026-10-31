@@ -71,9 +71,9 @@ footer {
 </header><main><h1>Connecting Hearts Worldwide</h1><p>
 Find meaningful marriage connections
 across countries, cultures and languages.
-</p><div class="card"><h2 style="color:gold">Welcome to ARPAN</h2><p>One World. Many Languages. One Connection.</p><button onclick="alert('Registration coming soon!')">
+</p><div class="card"><h2 style="color:gold">Welcome to ARPAN</h2><p>One World. Many Languages. One Connection.</p><button onclick="showRegister()"
 CREATE ACCOUNT
-</button><button onclick="alert('Login coming soon!')">
+</button><button onclick="showLogin()"
 LOGIN
 </button></div><p>🌍 Worldwide Marriage Connections</p>
 <p>❤️ Free Registration</p>
@@ -139,6 +139,13 @@ window.resetPassword = async function() {
   document.getElementById('message').textContent =
     error ? error.message : 'Password reset email sent.';
 };
+  function showRegister() {
+  alert("Registration page is opening soon!");
+}
+
+function showLogin() {
+  alert("Login page is opening soon!");
+  }
 </script>
 </body>
 </html>
