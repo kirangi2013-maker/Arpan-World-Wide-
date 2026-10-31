@@ -80,5 +80,65 @@ LOGIN
 <p>🌐 Multiple Languages</p></main><footer>
 Founder: Sonu Rathore<br>
 ARPAN WORLDWIDE © 2026
-</footer></body>
+</footer>
+<!-- ARPAN LOGIN SYSTEM -->
+
+<section id="auth">
+  <h2>Welcome to ARPAN</h2>
+  <p>Create your free worldwide account</p>
+
+  <input id="email" type="email" placeholder="Enter Email">
+
+  <input id="password" type="password" placeholder="Enter Password">
+
+  <button onclick="signup()">Create Account</button>
+  <button onclick="login()">Login</button>
+  <button onclick="resetPassword()">Forgot Password?</button>
+
+  <p id="message"></p>
+</section>
+
+<script type="module">
+import { createClient }
+from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+const supabase = createClient(
+  'https://dksfzxzsvlxzokxpdtlw.supabase.co',
+  'sb_publishable_XrdfyRdXZBFQf-LEdeIOkw_aV-ScN1r'
+);
+
+window.signup = async function() {
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  const { error } = await supabase.auth.signUp({
+    email, password
+  });
+
+  document.getElementById('message').textContent =
+    error ? error.message : 'Account created! Check your email.';
+};
+
+window.login = async function() {
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  const { error } = await supabase.auth.signInWithPassword({
+    email, password
+  });
+
+  document.getElementById('message').textContent =
+    error ? error.message : 'Login successful!';
+};
+
+window.resetPassword = async function() {
+  const email = document.getElementById('email').value;
+
+  const { error } = await supabase.auth.resetPasswordForEmail(email);
+
+  document.getElementById('message').textContent =
+    error ? error.message : 'Password reset email sent.';
+};
+</script>
+</body>
 </html>
